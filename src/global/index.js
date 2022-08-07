@@ -1,5 +1,7 @@
 const blogURI = "https://github.com/ParadoxPD/blogs";
 
-const apiURI = "https://markdown-to-html-by-paradox.herokuapp.com/";
+const markdownToHTMLURI = "https://markdown-to-html-by-paradox.herokuapp.com/";
 
-export { blogURI, apiURI };
+const githubURI = " https://api.github.com/repos/ParadoxPD/blogs";
+
+export { blogURI, markdownToHTMLURI, githubURI };
