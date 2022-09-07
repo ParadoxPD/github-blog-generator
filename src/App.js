@@ -1,9 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { getRepoData } from "./api/githubHandler";
+import { getRepoData, getMDFile } from "./api/githubHandler";
 
 function App() {
-  getRepoData();
+  getRepoData().then((data) => {
+    data.forEach((file) => {
+      getMDFile(file.url).then((data) => {
+        console.log(data);
+      });
+    });
+  });
+
   return (
     <div className="App">
       <header className="App-header">

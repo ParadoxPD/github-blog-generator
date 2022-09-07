@@ -5,4 +5,6 @@ const markdownToHTMLURI =
 
 const githubURI = " https://api.github.com/repos/ParadoxPD/blogs";
 
-export { blogURI, markdownToHTMLURI, githubURI };
+const repoName = "blogs";
+const userName = "ParadoxPD";
+export { blogURI, markdownToHTMLURI, githubURI, repoName, userName };
