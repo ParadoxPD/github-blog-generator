@@ -12,10 +12,14 @@ const getRepoData = async () => {
   let repoData = [];
 
   data.forEach((file) => {
-    repoData.push({
-      url: `https://raw.githubusercontent.com/${userName}/${repoName}/main/${file.path}`,
-      title: file.path,
-    });
+    if (applyFilter(file))
+      repoData.push({
+        url: `https://raw.githubusercontent.com/${userName}/${repoName}/main/${file.path}`,
+        title: file.path,
+        thumbnail: `https://raw.githubusercontent.com/${userName}/${repoName}/main/images/${
+          file.path.split(".")[0]
+        }.jpg`,
+      });
   });
   return repoData;
 };
@@ -25,6 +29,10 @@ const getMDFile = async (URL) => {
     return response.data;
   });
   return content;
+};
+
+const applyFilter = (data) => {
+  return data.path.endsWith(".md");
 };
 
 export { getRepoData, getMDFile };
