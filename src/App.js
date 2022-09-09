@@ -1,25 +1,23 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { getRepoData } from "./api/githubHandler";
+import { useState } from "react";
+import { getRepoData, getMDFile } from "./api/githubHandler";
+import HomePage from "./pages/homepage";
 
 function App() {
-  getRepoData();
+  const [image, setImage] = useState(null);
+
+  getRepoData().then((data) => {
+    console.log(data);
+    setImage(data[0].thumbnail);
+    data.forEach((file) => {
+      getMDFile(file.url).then((data) => {
+        console.log(data);
+      });
+    });
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HomePage />
     </div>
   );
 }
