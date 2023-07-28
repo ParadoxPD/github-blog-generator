@@ -7,4 +7,4 @@ const repoName = "blogs";
 const userName = "ParadoxPD";
 const githubURI = `https://api.github.com/repos/${userName}/${repoName}`;
 
-export { blogURI, markdownToHTMLURI, githubURI, repoName, userName };
+
